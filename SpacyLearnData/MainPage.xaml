@@ -1,0 +1,65 @@
+﻿<Page
+    x:Class="SpacyLearnData.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:SpacyLearnData"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Dark"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <RelativePanel>
+        <Button x:Name="loadpdfbtn" Click="loadpdfbtn_Click" Content="Load PDF" RelativePanel.AlignRightWithPanel="True"  Margin="50"/>
+        <StackPanel Height="100" x:Name="EntityMenu" Orientation="Horizontal" Margin="10,10,10,10">
+            <ListView  Height="100" MaxWidth="600" x:Name="EntityList" ItemsSource="{x:Bind Entitys , Mode=OneWay}"
+          ScrollViewer.HorizontalScrollMode="Enabled"
+          ScrollViewer.HorizontalScrollBarVisibility="Auto"
+          ScrollViewer.IsHorizontalRailEnabled="True"
+           >
+                <ListView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <VirtualizingStackPanel Orientation="Horizontal" />
+                    </ItemsPanelTemplate>
+                </ListView.ItemsPanel>
+                <ListView.ItemTemplate >
+                    <DataTemplate   >
+                        <TextBlock Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center" Height="80" Text="{Binding}" FontSize="48"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+           
+            <TextBox x:Name="entittyaddtxt" FontSize="48"  Width="200"></TextBox>
+            <Button x:Name="addentity" IsEnabled="False" Height="100" Click="addentity_Click"  >
+                <Button.Content>
+                    <TextBlock Text="Add Entity" FontSize="48"/>
+                </Button.Content>
+            </Button>
+        </StackPanel>
+        <ListView  Width="300" x:Name="SelectedEntityList"  RelativePanel.Below="loadpdfbtn" ItemsSource="{x:Bind actualentities , Mode=OneWay}" RelativePanel.RightOf="data"
+           
+           >
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Vertical" />
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate >
+                <DataTemplate x:DataType="local:Entity"  >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock   Height="80" Text="{x:Bind Entityname}" FontSize="28"/>
+                        <TextBlock   Height="80" Text=" : " FontSize="28"/>
+                        <TextBlock   Height="80" Text="{x:Bind value}" FontSize="28"/>
+                        
+                    </StackPanel>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBox RelativePanel.AlignLeftWithPanel="True" x:Name="data" IsEnabled="False"  Margin="50"  SelectionChanged="TextBox_SelectionChanged"  RelativePanel.Below="EntityMenu" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="800" IsReadOnly="True"   TextWrapping="Wrap" FontSize="48" FocusVisualPrimaryBrush="{x:Null}" SelectionHighlightColor="#FFF7922C" ></TextBox>
+        <Button x:Name="nextbtn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Content="Next"  Click="nextbtn_Click"/>
+        <Button x:Name="next2btn" RelativePanel.Above="nextbtn" RelativePanel.Below="data"  RelativePanel.AlignHorizontalCenterWithPanel="True" Content="Not Complete"  Click="next2btn_Click"/>
+        <Button x:Name="resetbtn" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Content="Reset"  Click="resetbtn_Click"/>
+        <Button x:Name="savebtn" RelativePanel.AlignLeftWithPanel="True"  RelativePanel.AlignBottomWithPanel="True" Content="Save"  Click="savebtn_Click"/>
+    </RelativePanel>
+</Page>
