@@ -56,7 +56,7 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBox RelativePanel.AlignLeftWithPanel="True" x:Name="data" IsEnabled="False"  Margin="50"  SelectionChanged="TextBox_SelectionChanged"  RelativePanel.Below="EntityMenu" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="800" IsReadOnly="True"   TextWrapping="Wrap" FontSize="48" FocusVisualPrimaryBrush="{x:Null}" SelectionHighlightColor="#FFF7922C" ></TextBox>
+        <TextBox RelativePanel.AlignLeftWithPanel="True" Height="500" x:Name="data" IsEnabled="False"  Margin="50"  SelectionChanged="TextBox_SelectionChanged"  RelativePanel.Below="EntityMenu" RelativePanel.AlignHorizontalCenterWithPanel="True" Width="800" IsReadOnly="True"   TextWrapping="Wrap" FontSize="48" FocusVisualPrimaryBrush="{x:Null}" SelectionHighlightColor="#FFF7922C" ></TextBox>
         <Button x:Name="nextbtn" RelativePanel.AlignRightWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Content="Next"  Click="nextbtn_Click"/>
         <Button x:Name="next2btn" RelativePanel.Above="nextbtn" RelativePanel.Below="data"  RelativePanel.AlignHorizontalCenterWithPanel="True" Content="Not Complete"  Click="next2btn_Click"/>
         <Button x:Name="resetbtn" RelativePanel.AlignHorizontalCenterWithPanel="True" RelativePanel.AlignBottomWithPanel="True" Content="Reset"  Click="resetbtn_Click"/>
